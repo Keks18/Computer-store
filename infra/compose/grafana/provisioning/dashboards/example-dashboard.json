@@ -1,0 +1,22 @@
+{
+  "id": null,
+  "title": "Spring Boot Metrics",
+  "tags": [],
+  "timezone": "browser",
+  "schemaVersion": 16,
+  "version": 0,
+  "refresh": "5s",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Application Uptime (seconds)",
+      "targets": [
+        {
+          "expr": "uptime_seconds",
+          "legendFormat": "uptime"
+        }
+      ],
+      "datasource": "Prometheus"
+    }
+  ]
+}
