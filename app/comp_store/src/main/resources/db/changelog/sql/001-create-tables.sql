@@ -28,5 +28,7 @@ CREATE TABLE category
 CREATE TABLE product
 (
     id   SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
+    name VARCHAR(255) NOT NULL,
+    category_id integer references category (id),
+    brand_id integer references brand (id)
 );

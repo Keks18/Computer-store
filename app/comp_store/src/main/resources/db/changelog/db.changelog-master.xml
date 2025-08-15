@@ -6,9 +6,8 @@
           http://www.liquibase.org/xml/ns/dbchangelog
           http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
-    <!-- Либо точечно -->
-    <include file="sql/001-create-tables.sql" relativeToChangelogFile="true"/>
+<!--    <include file="sql/001-create-tables.sql" relativeToChangelogFile="true"/>-->
 
     <!-- или автоматом все файлы из папки: -->
-    <!-- <includeAll path="sql" relativeToChangelogFile="true"/> -->
+     <includeAll path="sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
