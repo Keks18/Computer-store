@@ -16,6 +16,25 @@ services:
       timeout: 5s
       retries: 5
 
+  liquibase:
+    image: liquibase/liquibase:latest
+    container_name: liquibase
+    depends_on:
+      - db
+    volumes:
+      - "D:/study/Computer_Sell_Store/Computer-store/app/comp_store:/workspace"
+    working_dir: /workspace
+    command:
+      [
+        "--changeLogFile=src/main/resources/db/changelog/db.changelog-master.xml",
+        "--url=jdbc:postgresql://db:5432/${DB_NAME}",
+        "--username=${DB_USER}",
+        "--password=${DB_PASSWORD}",
+        "update"
+      ]
+    env_file:
+      - ../../.env
+
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: pgadmin

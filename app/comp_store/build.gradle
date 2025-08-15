@@ -2,6 +2,22 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.4'
     id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.liquibase.gradle' version '2.2.0'
+}
+
+import java.util.Properties
+
+def envFile = file("D:/study/Computer_Sell_Store/Computer-store/.env")
+
+if (envFile.exists()) {
+    println "Loading environment variables from .env"
+    Properties props = new Properties()
+    envFile.withInputStream { props.load(it) }
+    props.each { k, v ->
+        project.ext.set(k.toString(), v.toString())
+    }
+} else {
+    println ".env file not found at ${envFile}"
 }
 
 group = 'com.example'
@@ -24,6 +40,11 @@ dependencies {
     implementation 'io.micrometer:micrometer-registry-prometheus'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    liquibaseRuntime 'org.liquibase:liquibase-core:4.24.0'
+    liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:2.1.1'
+    liquibaseRuntime 'info.picocli:picocli:4.7.5'
+    liquibaseRuntime 'org.yaml:snakeyaml:1.33'
+    liquibaseRuntime 'org.postgresql:postgresql:42.7.2'
 }
 
 tasks.named('test') {

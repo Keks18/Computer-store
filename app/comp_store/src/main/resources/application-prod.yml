@@ -3,6 +3,9 @@ spring:
     url: jdbc:postgresql://db:5432/${DB_NAME}
     username: ${DB_USER}
     password: ${DB_PASSWORD}
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.db.changelog-master.xml
 
   data:
     redis:
